@@ -1,6 +1,6 @@
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, onOpen }) {
   return (
-    <article className="project-card">
+    <article className="project-card" onClick={() => onOpen(project)}>
       <span className="project-kind">{project.kind}</span>
       <h3 className="project-title">{project.title}</h3>
       <p className="project-desc">{project.description}</p>
@@ -11,9 +11,7 @@ export default function ProjectCard({ project }) {
           </span>
         ))}
       </div>
-      <a className="project-link" href={project.link} target="_blank" rel="noreferrer">
-        Voir le projet →
-      </a>
+      <span className="project-link">Voir le détail →</span>
     </article>
   );
 }

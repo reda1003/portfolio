@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard";
+import ProjectModal from "./ProjectModal";
 
 const filters = ["Tous", "Analyst", "Scientist"];
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("Tous");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects =
     activeFilter === "Tous"
@@ -32,9 +34,18 @@ export default function Projects() {
 
       <div className="projects-grid">
         {filteredProjects.map((project) => (
-          <ProjectCard project={project} key={project.title} />
+          <ProjectCard
+            project={project}
+            key={project.title}
+            onOpen={setSelectedProject}
+          />
         ))}
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }
