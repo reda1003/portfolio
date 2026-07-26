@@ -1,6 +1,11 @@
-export default function ProjectCard({ project, onOpen }) {
+import { Link } from "react-router-dom";
+
+export default function ProjectCard({ project }) {
   return (
-    <article className="project-card" onClick={() => onOpen(project)}>
+    <Link to={`/projets/${project.slug}`} className="project-card">
+      <div className="project-image-wrap">
+        <img src={project.image} alt={project.title} className="project-image" />
+      </div>
       <span className="project-kind">{project.kind}</span>
       <h3 className="project-title">{project.title}</h3>
       <p className="project-desc">{project.description}</p>
@@ -12,6 +17,6 @@ export default function ProjectCard({ project, onOpen }) {
         ))}
       </div>
       <span className="project-link">Voir le détail →</span>
-    </article>
+    </Link>
   );
 }

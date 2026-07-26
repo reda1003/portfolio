@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -5,8 +6,9 @@ import Education from "./components/Education";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import ProjectPage from "./components/ProjectPage";
 
-function App() {
+function Home() {
   return (
     <>
       <Hero />
@@ -16,6 +18,15 @@ function App() {
       <Skills />
       <Contact />
     </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/projets/:slug" element={<ProjectPage />} />
+    </Routes>
   );
 }
 

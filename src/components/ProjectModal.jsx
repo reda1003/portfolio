@@ -1,13 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+const TABS = [
+  { key: "context", label: "Contexte" },
+  { key: "approach", label: "Démarche" },
+  { key: "results", label: "Résultats" },
+];
 
 export default function ProjectModal({ project, onClose }) {
+  const [activeTab, setActiveTab] = useState("context");
+
   useEffect(() => {
+    setActiveTab("context"); // reset à chaque ouverture d'un nouveau projet
     function handleKey(e) {
       if (e.key === "Escape") onClose();
     }
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, [onClose]);
+  }, [project, onClose]);
 
   if (!project) return null;
 
@@ -17,6 +26,8 @@ export default function ProjectModal({ project, onClose }) {
         <button className="modal-close" onClick={onClose} aria-label="Fermer">
           ×
         </button>
+
+        <img src={project.image} alt={project.title} className="modal-image" />
 
         <span className="project-kind">{project.kind}</span>
         <h3 className="modal-title">{project.title}</h3>
@@ -29,27 +40,28 @@ export default function ProjectModal({ project, onClose }) {
           ))}
         </div>
 
-        <div className="modal-section">
-          <p className="modal-label">Contexte</p>
-          <p className="modal-text">{project.context}</p>
+        <div className="modal-tabs">
+          {TABS.map((tab) => (
+            <button
+              key={tab.key}
+              className={`modal-tab ${activeTab === tab.key ? "modal-tab-active" : ""}`}
+              onClick={() => setActiveTab(tab.key)}
+            >
+              {tab.label}
+            </button>
+          ))}
         </div>
 
         <div className="modal-section">
-          <p className="modal-label">Démarche</p>
-          <p className="modal-text">{project.approach}</p>
+          <p className="modal-text">{project[activeTab]}</p>
         </div>
 
-        <div className="modal-section">
-          <p className="modal-label">Résultats</p>
-          <p className="modal-text">{project.results}</p>
-        </div>
-
-        <a
+        
           className="btn btn-primary modal-link"
           href={project.link}
           target="_blank"
           rel="noreferrer"
-        >
+        <a>
           Voir le repo GitHub →
         </a>
       </div>
