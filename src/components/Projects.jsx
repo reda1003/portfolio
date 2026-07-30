@@ -3,7 +3,7 @@ import { projects } from "../data/projects";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 
-const filters = ["Tous", "Analyst", "Scientist"];
+const filters = ["Tous", "Data Analyst", "Data Scientist"];
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("Tous");

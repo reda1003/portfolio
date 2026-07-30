@@ -1,7 +1,7 @@
 export const projects = [
 {
   slug: "dashboard-ventes-retail",
-  kind: "Analyst",
+  kind: "Data Analyst",
   title: "Analyse des ventes & segmentation RFM",
   image: "/projects/retail-illustration.png",
 
@@ -41,7 +41,7 @@ export const projects = [
 },
   {
   slug: "analyse-churn-client",
-  kind: "Analyst",
+  kind: "Data Analyst",
   title: "Analyse de churn client",
   image: "/projects/telecom-illustration.png",
 
@@ -81,7 +81,7 @@ export const projects = [
 },
   {
     slug: "classification-risque-diabete",
-    kind: "Scientist",
+    kind: "Data Scientist",
     title: "Classification du risque diabète",
     image: "/projects/diabetes-illustration.png",
     description:
@@ -114,7 +114,7 @@ export const projects = [
   },
 {
   slug: "Prévision de la demande de vélos",
-  kind: "Scientist",
+  kind: "Data Scientist",
   title: "Prévision de demande temporelle",
   image: "/projects/bike-illustration.png",
 
